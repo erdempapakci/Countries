@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import SVGKitSwift
 @testable import CountriesRework
 
 final class CountriesReworkTests: XCTestCase {
