@@ -8,10 +8,11 @@
 import UIKit
 import RxSwift
 import RxCocoa
-class HomeViewController: UIViewController {
 
+final class HomeViewController: UIViewController {
+    
     @IBOutlet weak var homeTableView: UITableView!
-  
+    
     private var homeViewModel = HomeViewModel()
     private var bag = DisposeBag()
     var code = String()
@@ -20,7 +21,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         registerCell()
         binding()
-    
+        
     }
     func registerCell() {
         self.homeTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
@@ -28,30 +29,26 @@ class HomeViewController: UIViewController {
     }
     
     func binding() {
+        
         self.homeViewModel.fetchCountries()
         homeTableView.rx.setDelegate(self).disposed(by: bag)
         homeViewModel.countries.bind(to: homeTableView.rx.items(cellIdentifier: "TableViewCell", cellType: TableViewCell.self)) { (row,item,cell) in
             cell.countryName.text = item.name
+            cell.code = item.code
+            cell.codeLabel.text = item.code
+            
             self.homeViewModel.fetchCountries()
             
         }.disposed(by: bag)
-    
-     /*
-       homeTableView.rx.modelSelected(CountryList.self).bind{ selectedItems in
-            self.code = selectedItems.code
-            print(self.code)
-           self.performSegue(withIdentifier: "toDetails", sender: nil)
-        }.disposed(by: bag)
-      */
+        
         homeTableView.rx.modelSelected(CountryList.self)
             .subscribe { countryList in
                 let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
                 detailVC.code = countryList.code
                 self.navigationController?.pushViewController(detailVC, animated: true)
             }.disposed(by: bag)
-
-
+        
     }
-   
+    
 }
- extension HomeViewController: UITableViewDelegate {}
+extension HomeViewController: UITableViewDelegate {}
