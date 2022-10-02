@@ -15,7 +15,7 @@
 **This application is simply that we take 10 country data and show it in our application. An application that we show the details of. This application allows us to show what we want to save on the Saved View Controller and also delete it.**
 
 # Installation Guide
-* git clone https://github.com/erdempapakci/CountriesApp.git
+* git clone https://github.com/erdempapakci/Countries
 
 * cd moviesApplication
 
