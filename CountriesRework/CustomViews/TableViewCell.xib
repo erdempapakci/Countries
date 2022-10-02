@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="340" height="56"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="10" width="340" height="36"/>
+                <rect key="frame" x="0.0" y="0.0" width="340" height="56"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wv-GY-wEQ">
@@ -34,11 +34,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waW-ON-m8V">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waW-ON-m8V" customClass="CustomButton" customModule="CountriesRework" customModuleProvider="target">
                                 <rect key="frame" x="270" y="5" width="52" height="15"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                <connections>
+                                    <action selector="favButtonClck:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VoF-XF-Uoi"/>
+                                </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHd-aM-HZm">
+                                <rect key="frame" x="139" y="5" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -64,6 +74,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="cellView" destination="BQn-YE-AgC" id="vth-1n-x7c"/>
+                <outlet property="codeLabel" destination="wHd-aM-HZm" id="oB5-MO-zaV"/>
                 <outlet property="countryName" destination="wm1-hb-iXw" id="1sN-rP-Unf"/>
                 <outlet property="starButton" destination="waW-ON-m8V" id="tj4-8J-c6F"/>
             </connections>
