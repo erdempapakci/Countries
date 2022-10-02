@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+
 struct NetworkManager {
     
     static let shared = NetworkManager()
@@ -42,7 +43,6 @@ struct NetworkManager {
             
         }
         .resume()
-        
     }
     
     func fetchCountryDetails(code: String, completion: @escaping(Result<CountryDetailMain,Error>) -> Void) {
@@ -64,56 +64,8 @@ struct NetworkManager {
                     
                 }
             }
-            
         }
         .resume()
         
     }
-     
- /*
-    func fetchCountryListt(code:String) -> Observable<CountryDetailMain> {
-        return Observable.create { observer -> Disposable in
-            var request = URLRequest(url: URL(string: NetworkManager.apiRequest + "\(code)")!)
-            request.httpMethod = "GET"
-            request.allHTTPHeaderFields = headers
-            
-          let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                guard let data = data, let decoded = try? JSONDecoder().decode(CountryDetailMain.self, from: data) else {return}
-              observer.onNext(decoded)
-                observer.onCompleted()
-               
-              
-                
-            }
-            task.resume()
-            return Disposables.create {
-                task.cancel()
-            }
-        }
-        
-    }
-    */
-    /*
-    func fetchCountryDetails(code:String) -> Observable<CountryDetailMain> {
-        return Observable.create { observer -> Disposable in
-            var request = URLRequest(url: URL(string: NetworkManager.apiRequest + "\(code)")!)
-            request.httpMethod = "GET"
-            request.allHTTPHeaderFields = headers
-            
-          let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                guard let data = data, let decoded = try? JSONDecoder().decode(CountryDetailMain.self, from: data) else {return}
-              observer.onNext(decoded)
-                observer.onCompleted()
-               
-              
-                
-            }
-            task.resume()
-            return Disposables.create {
-                task.cancel()
-            }
-        }
-        
-    }
-     */
 }
